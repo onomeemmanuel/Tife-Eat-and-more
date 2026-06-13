@@ -46,7 +46,11 @@ app.use('/api/orders', orderRoutes);
 
 // Serve frontend static files if they exist (single-service deployment)
 const frontendDist = path.join(__dirname, '../../frontend/dist');
-if (fs.existsSync(frontendDist)) {
+const frontendExists = fs.existsSync(frontendDist);
+console.log('frontendDist path:', frontendDist);
+console.log('frontendDist exists:', frontendExists);
+if (frontendExists) {
+  console.log('Serving frontend static files from frontend/dist');
   app.use(express.static(frontendDist));
   app.get('*', (req, res, next) => {
     // Let API routes continue to next handler
@@ -54,6 +58,7 @@ if (fs.existsSync(frontendDist)) {
     res.sendFile(path.join(frontendDist, 'index.html'));
   });
 } else {
+  console.warn('frontend/dist not found; serving backend placeholder response.');
   app.get('/', (req, res) => {
     res.send('Tife Eat and more API is running');
   });
