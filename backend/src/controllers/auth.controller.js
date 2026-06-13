@@ -201,8 +201,12 @@ exports.googleCallback = (req, res) => {
     secure: process.env.NODE_ENV === 'production',
     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
   });
-
-  const redirectUrl = `${process.env.CLIENT_URL}/?token=${token}`;
+  // Build a safe redirect URL. Prefer explicit CLIENT_URL, otherwise infer from request headers.
+  const proto = req.headers['x-forwarded-proto'] || req.protocol;
+  const host = req.headers['x-forwarded-host'] || req.headers.host || req.get('host');
+  const base = process.env.CLIENT_URL || `${proto}://${host}`;
+  const redirectUrl = `${base}/?token=${token}`;
+  console.log('googleCallback redirect to:', redirectUrl);
   res.redirect(redirectUrl);
 };
 

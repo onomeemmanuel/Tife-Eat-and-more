@@ -5,10 +5,14 @@ const User = require('../models/user.model');
 console.log('Google OAuth callback URL:', process.env.GOOGLE_CALLBACK_URL);
 console.log('Google OAuth client ID present:', Boolean(process.env.GOOGLE_CLIENT_ID));
 
+const fallbackCallback = process.env.GOOGLE_CALLBACK_URL || (process.env.CLIENT_URL ? `${process.env.CLIENT_URL}/api/auth/google/callback` : 'http://localhost:5000/api/auth/google/callback');
+
+console.log('Using Google OAuth callback:', fallbackCallback);
+
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.GOOGLE_CALLBACK_URL
+  callbackURL: fallbackCallback
 },
 async (accessToken, refreshToken, profile, done) => {
   try {
