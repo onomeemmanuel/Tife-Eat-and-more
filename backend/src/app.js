@@ -52,7 +52,7 @@ console.log('frontendDist exists:', frontendExists);
 if (frontendExists) {
   console.log('Serving frontend static files from frontend/dist');
   app.use(express.static(frontendDist));
-  app.get('*', (req, res, next) => {
+  app.use((req, res, next) => {
     // Let API routes continue to next handler
     if (req.path.startsWith('/api')) return next();
     res.sendFile(path.join(frontendDist, 'index.html'));
