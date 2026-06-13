@@ -78,11 +78,18 @@ exports.register = async (req, res) => {
       }
     })();
 
-    res.status(201).json({
+    const responsePayload = {
       success: true,
       message: 'Account created! Check your email for the verification code.',
       userId: user._id
-    });
+    };
+
+    // For testing only: return OTP in response when explicitly enabled via env var
+    if (process.env.RETURN_OTP_FOR_TESTING === 'true') {
+      responsePayload.otp = otp;
+    }
+
+    res.status(201).json(responsePayload);
   } catch (err) {
     res.status(500).json({ success: false, message: err.message });
   }
