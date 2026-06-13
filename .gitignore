@@ -1,0 +1,22 @@
+# Node modules
+node_modules/
+
+# Frontend build
+frontend/dist/
+
+# Env files
+.env
+.env.local
+
+# Logs
+npm-debug.log*
+logs/
+
+# OS files
+.DS_Store
+
+# IDE
+.vscode/
+
+# lockfiles (optional)
+# package-lock.json

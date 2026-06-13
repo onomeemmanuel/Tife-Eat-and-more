@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: tife-single-service
+    env: node
+    repo: <your-git-repo-url>
+    branch: main
+    root: .
+    buildCommand: |
+      cd frontend
+      npm install
+      npm run build
+      cd ../backend
+      npm install
+    startCommand: "cd backend && npm start"
+    healthCheckPath: "/"
+    plan: starter
+    envVars:
+      - key: MONGO_URI
+        value: "<YOUR_MONGO_URI>"
+      - key: JWT_SECRET
+        value: "<YOUR_JWT_SECRET>"
+      - key: CLIENT_URL
+        value: "https://your-frontend.onrender.com"
+      - key: SESSION_SECRET
+        value: "<YOUR_SESSION_SECRET>"
+# Note: It's recommended to set secrets in the Render dashboard rather than committing them here.
