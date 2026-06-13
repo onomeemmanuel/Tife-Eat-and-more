@@ -28,3 +28,32 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px #1a1a1a inset !important;
   -webkit-text-fill-color: #fff !important;
 }
+
+/* Mobile responsiveness tweaks */
+@media (max-width: 600px) {
+  html, body {
+    font-size: 14px;
+  }
+
+  body {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  h1 { font-size: 20px !important; }
+  h2 { font-size: 16px !important; }
+  h3 { font-size: 15px !important; }
+  p  { font-size: 13px !important; }
+
+  /* Make images scale down on small screens */
+  img { max-width: 100%; height: auto !important; }
+
+  /* Reduce button size and spacing */
+  button { font-size: 14px !important; padding: 10px 12px !important; }
+
+  /* Ensure inputs expand to available width */
+  input, textarea { width: 100% !important; box-sizing: border-box; }
+
+  /* Tighter card/grid spacing */
+  .food-grid, .cards, .container { padding-left: 0 !important; padding-right: 0 !important; }
+}
