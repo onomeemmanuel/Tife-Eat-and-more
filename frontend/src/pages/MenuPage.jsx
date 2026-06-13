@@ -26,8 +26,8 @@ const MenuPage = () => {
     setLoading(true);
     try {
       const url = category === 'All'
-        ? 'http://localhost:5000/api/foods'
-        : `http://localhost:5000/api/foods?category=${category}`;
+        ? '/api/foods'
+        : `/api/foods?category=${category}`;
       const { data } = await axios.get(url, { withCredentials: true });
       setFoods(data.foods);
     } catch (err) {

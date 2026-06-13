@@ -13,7 +13,7 @@ const FeaturedCarousel = () => {
   const { addToCart } = useCart();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/foods/featured', { withCredentials: true })
+    axios.get('/api/foods/featured', { withCredentials: true })
       .then(({ data }) => setFeatured(data.foods))
       .catch(console.error);
   }, []);

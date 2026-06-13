@@ -85,7 +85,7 @@ const OrderTrackingPage = () => {
 
   useEffect(() => {
     // Connect socket
-    socketRef.current = io('http://localhost:5000', {
+    socketRef.current = io('/', {
       withCredentials: true
     });
 
@@ -137,7 +137,7 @@ const OrderTrackingPage = () => {
   const advanceStatus = async () => {
     try {
       await axios.post(
-        `http://localhost:5000/api/orders/${orderId}/simulate`,
+        `/api/orders/${orderId}/simulate`,
         {},
         { withCredentials: true }
       );
