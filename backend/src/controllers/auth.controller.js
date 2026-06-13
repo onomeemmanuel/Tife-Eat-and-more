@@ -205,3 +205,4 @@ exports.googleCallback = (req, res) => {
   const redirectUrl = `${process.env.CLIENT_URL}/?token=${token}`;
   res.redirect(redirectUrl);
 };
+
