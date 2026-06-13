@@ -55,25 +55,28 @@ exports.register = async (req, res) => {
       otp: { code: otp, expiresAt }
     });
 
-    try {
-      console.log('Attempting to send OTP email to', email);
-      await sendEmail({
-        to: email,
-        subject: 'Tife Eat and more — Verify your email',
-        html: `
-          <div style="font-family:sans-serif;max-width:480px;margin:auto">
-            <h2 style="color:#e85d24">Welcome to Tife Eat and more! 🍔</h2>
-            <p>Hi ${name}, use this code to verify your account:</p>
-            <div style="font-size:36px;font-weight:bold;letter-spacing:8px;color:#e85d24;margin:24px 0">
-              ${otp}
+    // Send OTP email asynchronously so request doesn't hang if mail transport is slow
+    (async () => {
+      try {
+        console.log('Attempting to send OTP email to', email);
+        await sendEmail({
+          to: email,
+          subject: 'Tife Eat and more — Verify your email',
+          html: `
+            <div style="font-family:sans-serif;max-width:480px;margin:auto">
+              <h2 style="color:#e85d24">Welcome to Tife Eat and more! 🍔</h2>
+              <p>Hi ${name}, use this code to verify your account:</p>
+              <div style="font-size:36px;font-weight:bold;letter-spacing:8px;color:#e85d24;margin:24px 0">
+                ${otp}
+              </div>
+              <p style="color:#888">This code expires in 10 minutes.</p>
             </div>
-            <p style="color:#888">This code expires in 10 minutes.</p>
-          </div>
-        `
-      });
-    } catch (emailErr) {
-      console.error('OTP email failed to send:', emailErr.message, 'email=', email);
-    }
+          `
+        });
+      } catch (emailErr) {
+        console.error('OTP email failed to send:', emailErr.message, 'email=', email);
+      }
+    })();
 
     res.status(201).json({
       success: true,
@@ -130,20 +133,27 @@ exports.resendOTP = async (req, res) => {
     user.otp = { code: otp, expiresAt };
     await user.save();
 
-    console.log('Attempting to resend OTP email to', user.email);
-    await sendEmail({
-      to: user.email,
-      subject: 'Tife Eat and more — New verification code',
-      html: `
-        <div style="font-family:sans-serif;max-width:480px;margin:auto">
-          <h2 style="color:#e85d24">New verification code</h2>
-          <div style="font-size:36px;font-weight:bold;letter-spacing:8px;color:#e85d24;margin:24px 0">
-            ${otp}
-          </div>
-          <p style="color:#888">This code expires in 10 minutes.</p>
-        </div>
-      `
-    });
+    // Send OTP email asynchronously to avoid blocking
+    (async () => {
+      try {
+        console.log('Attempting to resend OTP email to', user.email);
+        await sendEmail({
+          to: user.email,
+          subject: 'Tife Eat and more — New verification code',
+          html: `
+            <div style="font-family:sans-serif;max-width:480px;margin:auto">
+              <h2 style="color:#e85d24">New verification code</h2>
+              <div style="font-size:36px;font-weight:bold;letter-spacing:8px;color:#e85d24;margin:24px 0">
+                ${otp}
+              </div>
+              <p style="color:#888">This code expires in 10 minutes.</p>
+            </div>
+          `
+        });
+      } catch (emailErr) {
+        console.error('Resend OTP failed:', emailErr.message, 'email=', user.email);
+      }
+    })();
 
     res.json({ success: true, message: 'New OTP sent to your email' });
   } catch (err) {
