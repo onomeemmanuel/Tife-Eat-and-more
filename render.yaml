@@ -11,7 +11,7 @@ services:
       npm run build
       cd ../backend
       npm install
-    startCommand: "cd backend && npm start"
+    startCommand: npm start --prefix backend
     healthCheckPath: "/"
     plan: starter
     envVars:
