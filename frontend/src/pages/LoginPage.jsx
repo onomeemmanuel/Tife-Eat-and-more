@@ -40,23 +40,13 @@ const LoginPage = () => {
   };
 
   return (
-    <div style={{
-      minHeight: '100vh', display: 'flex',
-      alignItems: 'center', justifyContent: 'center',
-      background: 'linear-gradient(135deg, #0f0f0f 0%, #1a0a00 100%)',
-      padding: '20px'
-    }}>
+    <div className="app-page" style={{ background: 'linear-gradient(135deg, #0f0f0f 0%, #1a0a00 100%)' }}>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        style={{
-          width: '100%', maxWidth: '420px',
-          background: '#161616',
-          border: '1px solid #2a2a2a',
-          borderRadius: '24px',
-          padding: '40px 36px'
-        }}
+        className="auth-card"
+        style={{ background: '#161616', border: '1px solid #2a2a2a' }}
       >
         <motion.div
           initial={{ scale: 0 }}

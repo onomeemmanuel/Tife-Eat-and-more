@@ -20,12 +20,22 @@ router.get('/me', protect, getMe);
 router.post('/logout', logout);
 
 // Google OAuth
+const googleCallbackURL = process.env.GOOGLE_CALLBACK_URL || (process.env.CLIENT_URL ? `${process.env.CLIENT_URL}/api/auth/google/callback` : process.env.RENDER_EXTERNAL_URL ? `${process.env.RENDER_EXTERNAL_URL}/api/auth/google/callback` : 'http://localhost:5000/api/auth/google/callback');
+
 router.get('/google',
-  passport.authenticate('google', { scope: ['profile', 'email'], prompt: 'select_account' })
+  passport.authenticate('google', {
+    scope: ['profile', 'email'],
+    prompt: 'select_account',
+    callbackURL: googleCallbackURL
+  })
 );
 
 router.get('/google/callback',
-  passport.authenticate('google', { failureRedirect: `${process.env.CLIENT_URL || 'http://localhost:5174'}/login`, session: false }),
+  passport.authenticate('google', {
+    failureRedirect: `${process.env.CLIENT_URL || 'http://localhost:5174'}/login`,
+    session: false,
+    callbackURL: googleCallbackURL
+  }),
   googleCallback
 );
 
