@@ -6,15 +6,15 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 
-import SplashScreen from './pages/SplashScreen';
+import SplashScreen from './pages/splashScreen';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import VerifyOTPPage from './pages/VerifyOTPPage';
 import MenuPage from './pages/MenuPage';
-import CheckoutPage from './pages/CheckoutPage';
+import CheckoutPage from './pages/checkoutPage';
 import OrderTrackingPage from './pages/OrderTrackingPage';
 import OrdersHistoryPage from './pages/OrdersHistoryPage';
-import ProfilePage from './pages/ProfilePage';
+import ProfilePage from './pages/profilepage';
 import CartSidebar from './components/CartSidebar';
 
 const ProtectedRoute = ({ children }) => {
