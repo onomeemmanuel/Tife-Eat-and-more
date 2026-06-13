@@ -4,7 +4,9 @@
   box-sizing: border-box;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   min-height: 100vh;
   width: 100%;
 }
@@ -51,13 +53,16 @@ input:-webkit-autofill {
 
 /* Mobile responsiveness tweaks */
 @media (max-width: 900px) {
-  html, body {
+
+  html,
+  body {
     font-size: 14px;
   }
 
-  body {
-    padding-left: 8px !important;
-    padding-right: 8px !important;
+  /* Removed body padding that was breaking navbar */
+  #root {
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
   .app-page {
@@ -72,20 +77,46 @@ input:-webkit-autofill {
     border-radius: 18px;
   }
 
-  h1 { font-size: 20px !important; }
-  h2 { font-size: 16px !important; }
-  h3 { font-size: 15px !important; }
-  p  { font-size: 13px !important; }
+  h1 {
+    font-size: 20px !important;
+  }
+
+  h2 {
+    font-size: 16px !important;
+  }
+
+  h3 {
+    font-size: 15px !important;
+  }
+
+  p {
+    font-size: 13px !important;
+  }
 
   /* Make images scale down on small screens */
-  img { max-width: 100%; height: auto !important; }
+  img {
+    max-width: 100%;
+    height: auto !important;
+  }
 
-  /* Reduce button size and spacing */
-  button { font-size: 14px !important; padding: 10px 12px !important; }
+  /* Only apply to non-navbar buttons */
+  button:not(.nav-btn) {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
 
   /* Ensure inputs expand to available width */
-  input, textarea { width: 100% !important; box-sizing: border-box; }
+  input,
+  textarea {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
 
   /* Tighter card/grid spacing */
-  .food-grid, .cards, .container { padding-left: 0 !important; padding-right: 0 !important; }
+  .food-grid,
+  .cards,
+  .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
