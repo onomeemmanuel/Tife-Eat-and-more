@@ -1,6 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const User = require('../models/User.model');
+const User = require('../models/user.model');
 
 console.log('Google OAuth callback URL:', process.env.GOOGLE_CALLBACK_URL);
 console.log('Google OAuth client ID present:', Boolean(process.env.GOOGLE_CLIENT_ID));
