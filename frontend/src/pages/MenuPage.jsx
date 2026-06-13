@@ -66,6 +66,7 @@ const MenuPage = () => {
           animate={{ opacity: 1, y: 0 }}
           style={{
             paddingTop: '56px', paddingBottom: '20px',
+            marginTop: '24px',
             display: 'flex', justifyContent: 'space-between',
             alignItems: 'flex-start'
           }}

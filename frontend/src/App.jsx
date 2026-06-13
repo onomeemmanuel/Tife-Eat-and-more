@@ -28,14 +28,14 @@ const AppRoutes = () => (
     <>
       <CartSidebar />
       <Routes>
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/verify-otp" element={<VerifyOTPPage />} />
-      <Route path="/" element={<ProtectedRoute><MenuPage /></ProtectedRoute>} />
-      <Route path="/checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
-      <Route path="/track/:orderId" element={<ProtectedRoute><OrderTrackingPage /></ProtectedRoute>} />
-      <Route path="/orders" element={<ProtectedRoute><OrdersHistoryPage /></ProtectedRoute>} />
-      <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/verify-otp" element={<VerifyOTPPage />} />
+        <Route path="/" element={<ProtectedRoute><MenuPage /></ProtectedRoute>} />
+        <Route path="/checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
+        <Route path="/track/:orderId" element={<ProtectedRoute><OrderTrackingPage /></ProtectedRoute>} />
+        <Route path="/orders" element={<ProtectedRoute><OrdersHistoryPage /></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
       </Routes>
     </>
   </CartProvider>
@@ -46,28 +46,28 @@ const App = () => {
 
   return (
     <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
-      <AuthProvider>
-        <Toaster
-          position="top-center"
-          toastOptions={{
-            style: {
-              background: '#1a1a1a',
-              color: '#fff',
-              border: '1px solid #2a2a2a',
-              borderRadius: '12px'
-            }
-          }}
-        />
-        <AnimatePresence mode="wait">
-          {showSplash ? (
-            <SplashScreen key="splash" onDone={() => setShowSplash(false)} />
-          ) : (
-            <BrowserRouter key="app">
+      <BrowserRouter>
+        <AuthProvider>
+          <Toaster
+            position="top-center"
+            toastOptions={{
+              style: {
+                background: '#1a1a1a',
+                color: '#fff',
+                border: '1px solid #2a2a2a',
+                borderRadius: '12px'
+              }
+            }}
+          />
+          <AnimatePresence mode="wait">
+            {showSplash ? (
+              <SplashScreen key="splash" onDone={() => setShowSplash(false)} />
+            ) : (
               <AppRoutes />
-            </BrowserRouter>
-          )}
-        </AnimatePresence>
-      </AuthProvider>
+            )}
+          </AnimatePresence>
+        </AuthProvider>
+      </BrowserRouter>
     </GoogleOAuthProvider>
   );
 };
