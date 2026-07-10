@@ -15,6 +15,7 @@ import CheckoutPage from './pages/checkoutPage';
 import OrderTrackingPage from './pages/OrderTrackingPage';
 import OrdersHistoryPage from './pages/OrdersHistoryPage';
 import ProfilePage from './pages/profilepage';
+import ChatbotPage from './pages/ChatbotPage';
 import CartSidebar from './components/CartSidebar';
 
 const ProtectedRoute = ({ children }) => {
@@ -36,6 +37,7 @@ const AppRoutes = () => (
         <Route path="/track/:orderId" element={<ProtectedRoute><OrderTrackingPage /></ProtectedRoute>} />
         <Route path="/orders" element={<ProtectedRoute><OrdersHistoryPage /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+        <Route path="/chatbot" element={<ProtectedRoute><ChatbotPage /></ProtectedRoute>} />
       </Routes>
     </>
   </CartProvider>

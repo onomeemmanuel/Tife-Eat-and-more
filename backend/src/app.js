@@ -11,6 +11,7 @@ require('./config/passport');
 const authRoutes = require('./routes/routes');
 const foodRoutes = require('./routes/food.routes');
 const orderRoutes = require('./routes/order.routes');
+const chatbotRoutes = require('./routes/chatbot.routes');
 
 const app = express();
 
@@ -43,6 +44,7 @@ app.use(passport.session());
 app.use('/api/auth', authRoutes);
 app.use('/api/foods', foodRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/chatbot', chatbotRoutes);
 
 // Serve frontend static files if they exist (single-service deployment)
 const frontendDist = path.join(__dirname, '../../frontend/dist');

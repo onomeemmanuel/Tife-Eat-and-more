@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import BottomNav from '../components/BottomNav';
 import FeaturedCarousel from '../components/FeaturedCarousel';
 import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const CATEGORIES = ['All', 'Burgers', 'Pizza', 'Chicken', 'Sides', 'Drinks', 'Desserts'];
 
@@ -17,27 +18,41 @@ const CATEGORY_ICONS = {
 
 const MenuPage = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [foods, setFoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState('All');
   const [search, setSearch] = useState('');
 
-  const fetchFoods = async (category) => {
+  const fetchFoods = async (category, active = true) => {
     setLoading(true);
     try {
       const url = category === 'All'
         ? '/api/foods'
         : `/api/foods?category=${category}`;
       const { data } = await axios.get(url, { withCredentials: true });
-      setFoods(data.foods);
+      if (active) {
+        setFoods(data.foods);
+      }
     } catch (err) {
       console.error(err);
     } finally {
-      setLoading(false);
+      if (active) {
+        setLoading(false);
+      }
     }
   };
 
-  useEffect(() => { fetchFoods(activeCategory); }, [activeCategory]);
+  useEffect(() => {
+    let active = true;
+    const loadFoods = async () => {
+      await fetchFoods(activeCategory, active);
+    };
+    loadFoods();
+    return () => {
+      active = false;
+    };
+  }, [activeCategory]);
 
   const filtered = foods.filter(f =>
     f.name.toLowerCase().includes(search.toLowerCase())
@@ -84,6 +99,7 @@ const MenuPage = () => {
           </div>
           <motion.div
             whileTap={{ scale: 0.9 }}
+            onClick={() => navigate('/chatbot')}
             style={{
               width: '44px', height: '44px',
               background: '#1a1a1a',

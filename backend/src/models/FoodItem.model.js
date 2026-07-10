@@ -6,7 +6,7 @@ const foodItemSchema = new mongoose.Schema({
   price: { type: Number, required: true },
   category: {
     type: String,
-    enum: ['Burgers', 'Pizza', 'Drinks', 'Sides', 'Desserts', 'Chicken'],
+    enum: ['Burgers', 'Pizza', 'Drinks', 'Sides', 'Desserts', 'Chicken','Native foods'],
     required: true
   },
   image: { type: String, required: true },

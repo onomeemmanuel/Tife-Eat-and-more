@@ -84,9 +84,9 @@ exports.register = async (req, res) => {
       userId: user._id
     };
 
-    // For testing only: return OTP in response when explicitly enabled via env var
-    if (process.env.RETURN_OTP_FOR_TESTING === 'true') {
+    if (process.env.RETURN_OTP_FOR_TESTING === 'true' || process.env.NODE_ENV !== 'production') {
       responsePayload.otp = otp;
+      responsePayload.devNote = 'OTP was also returned for local testing because email delivery may be unavailable.';
     }
 
     res.status(201).json(responsePayload);

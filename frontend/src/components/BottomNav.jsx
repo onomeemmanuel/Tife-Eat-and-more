@@ -16,6 +16,7 @@ const BottomNav = () => {
 			}}>
 				<button onClick={() => navigate('/')} style={buttonStyle}>Home</button>
 				<button onClick={() => navigate('/orders')} style={buttonStyle}>Orders</button>
+				<button onClick={() => navigate('/chatbot')} style={buttonStyle}>Chatbot</button>
 				<button onClick={() => navigate('/profile')} style={buttonStyle}>Profile</button>
 			</div>
 		</nav>

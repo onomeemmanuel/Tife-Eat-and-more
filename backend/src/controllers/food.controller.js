@@ -117,6 +117,51 @@ const seedFoods = async () => {
       image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400',
       rating: 4.7,
       prepTime: '5 min'
+    },
+    {
+      name:'coke',
+      description:'Refreshing taste',
+      price: 1000,
+      category:'Drinks',
+      image:'https://i.pinimg.com/736x/75/6d/cf/756dcf9b5c0d9dd5d30eb4416b8f3f39.jpg',
+      rating: 4.5,
+      prepTime: '2 min'
+    },
+    {
+      name:'layered Strawberry Shortcake Cake',
+      description:'Delicious layered cake with fresh strawberries and cream',
+      price: 3500,
+      category:'Desserts',
+      image:'https://i.pinimg.com/736x/83/d7/3d/83d73d74e32676c2e6dd7b422aa8deb1.jpg',
+      rating: 4.9,
+      prepTime: '15 min'
+    },
+    {
+      name:'crispy Baked Chicken Wings',
+      description:'Crispy baked chicken wings with a tangy glaze',
+      price: 4000,
+      category:'Chicken',
+      image:'https://i.pinimg.com/736x/ae/22/2e/ae222ef90cb856bf7f3347edf008b1d0.jpg',
+      rating: 4.8,
+      prepTime: '20 min'
+    },
+    {
+      name:'American Style Homemade Burger',
+      description :'Juicy beef patty with fresh toppings and a soft bun',
+      price: 4500,
+      category:'Burgers',
+      image:'https://i.pinimg.com/736x/ba/2b/7c/ba2b7c9712eaf9353e64c2fe72fba90a.jpg',
+      rating: 4.7,
+      prepTime: '15 min'
+    },
+    {
+      name:' Jollof Rice',
+      description:'Hot and tasty rice',
+      price:5600,
+      category: 'Native foods',
+      image:'https://i.pinimg.com/736x/e8/81/fa/e881fac572551ace994ffe9ef202d480.jpg',
+      rating:4.9,
+      prepTime:'20 min'
     }
   ]);
   console.log('Food items seeded!');

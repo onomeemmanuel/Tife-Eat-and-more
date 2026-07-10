@@ -2,7 +2,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { motion } from 'framer-motion';
 
 const GoogleButton = () => {
-  const apiBase = import.meta.env.VITE_API_URL || '';
+  const apiBase = (import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/$/, '');
 
   const handleClick = () => {
     window.location.href = `${apiBase}/api/auth/google`;

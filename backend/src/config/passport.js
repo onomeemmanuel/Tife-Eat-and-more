@@ -2,11 +2,20 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const User = require('../models/user.model');
 
+const resolveGoogleCallbackURL = () => {
+  if (process.env.GOOGLE_CALLBACK_URL) return process.env.GOOGLE_CALLBACK_URL;
+
+  if (process.env.CLIENT_URL) {
+    return `${process.env.CLIENT_URL}/api/auth/google/callback`;
+  }
+
+  return 'http://localhost:5000/api/auth/google/callback';
+};
+
+const fallbackCallback = resolveGoogleCallbackURL();
+
 console.log('Google OAuth callback URL:', process.env.GOOGLE_CALLBACK_URL);
 console.log('Google OAuth client ID present:', Boolean(process.env.GOOGLE_CLIENT_ID));
-
-const fallbackCallback = process.env.GOOGLE_CALLBACK_URL || (process.env.CLIENT_URL ? `${process.env.CLIENT_URL}/api/auth/google/callback` : process.env.RENDER_EXTERNAL_URL ? `${process.env.RENDER_EXTERNAL_URL}/api/auth/google/callback` : 'http://localhost:5000/api/auth/google/callback');
-
 console.log('Using Google OAuth callback:', fallbackCallback);
 
 passport.use(new GoogleStrategy({
