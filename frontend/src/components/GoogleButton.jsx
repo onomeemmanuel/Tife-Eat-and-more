@@ -1,9 +1,11 @@
 import { FcGoogle } from 'react-icons/fc';
 import { motion } from 'framer-motion';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const GoogleButton = () => {
   const handleClick = () => {
-    window.location.assign('/api/auth/google');
+    window.location.assign(`${API_URL}/api/auth/google`);
   };
 
   return (
