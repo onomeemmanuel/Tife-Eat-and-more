@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { getMyOrders } from '../api/orders';
 import BottomNav from '../components/BottomNav';
-import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 
 const STATUS_COLORS = {
   pending:   { bg: '#1a1500', text: '#f59e0b' },
@@ -18,13 +18,30 @@ const OrdersHistoryPage = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const { setUser } = useAuth();
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      setUser(null);
+      navigate('/login');
+      return;
+    }
+
     getMyOrders()
-      .then(({ data }) => setOrders(data.orders))
-      .catch(console.error)
+      .then(({ data }) => setOrders(data.orders || []))
+      .catch((err) => {
+        if (err.response?.status === 401) {
+          localStorage.removeItem('token');
+          setUser(null);
+          navigate('/login');
+          return;
+        }
+        console.error(err);
+      })
       .finally(() => setLoading(false));
-  }, []);
+  }, [navigate, setUser]);
 
   return (
     <div style={{ minHeight: '100vh', background: '#0f0f0f', paddingBottom: '100px' }}>

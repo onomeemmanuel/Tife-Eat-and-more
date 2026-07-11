@@ -19,10 +19,21 @@ export const AuthProvider = ({ children }) => {
     }
 
     const fetchUser = async () => {
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        setUser(null);
+        setLoading(false);
+        return;
+      }
+
       try {
         const { data } = await getMe();
-        setUser(data.user);
-      } catch {
+        setUser(data.user ?? null);
+      } catch (err) {
+        if (err.response?.status === 401) {
+          localStorage.removeItem('token');
+        }
         setUser(null);
       } finally {
         setLoading(false);

@@ -2,7 +2,31 @@ import { useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { motion } from 'framer-motion';
 import { useCart } from '../context/CartContext';
-import axios from 'axios';
+import API from '../api/auth';
+
+const FALLBACK_FEATURED = [
+  {
+    _id: 'fallback-burger',
+    name: 'Classic Smash Burger',
+    price: 4500,
+    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400',
+    description: 'Double smash patty, cheddar, pickles, special sauce'
+  },
+  {
+    _id: 'fallback-pizza',
+    name: 'Pepperoni Pizza',
+    price: 6800,
+    image: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400',
+    description: 'Loaded pepperoni, mozzarella, tomato base'
+  },
+  {
+    _id: 'fallback-chicken',
+    name: 'Crispy Fried Chicken',
+    price: 3800,
+    image: 'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=400',
+    description: '3 pieces seasoned crispy chicken, coleslaw'
+  }
+];
 
 const FeaturedCarousel = () => {
   const [emblaRef] = useEmblaCarousel({
@@ -13,9 +37,12 @@ const FeaturedCarousel = () => {
   const { addToCart } = useCart();
 
   useEffect(() => {
-    axios.get('/api/foods/featured', { withCredentials: true })
-      .then(({ data }) => setFeatured(data.foods))
-      .catch(console.error);
+    API.get('/foods/featured')
+      .then(({ data }) => {
+        const list = Array.isArray(data?.foods) ? data.foods : [];
+        setFeatured(list.length ? list : FALLBACK_FEATURED);
+      })
+      .catch(() => setFeatured(FALLBACK_FEATURED));
   }, []);
 
   if (!featured.length) return null;
