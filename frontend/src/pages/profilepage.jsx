@@ -23,13 +23,13 @@ const ProfilePage = () => {
 
   return (
     <div style={{
-      minHeight: '100vh', background: '#0f0f0f',
+      minHeight: '100vh', background: '#f8fafc',
       paddingBottom: '100px'
     }}>
       {/* Header */}
       <div style={{
         padding: '56px 24px 32px',
-        borderBottom: '1px solid #1a1a1a'
+        borderBottom: '1px solid #e5e7eb'
       }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,12 +44,13 @@ const ProfilePage = () => {
             style={{
               width: '72px', height: '72px',
               borderRadius: '50%',
-              background: '#1a1a1a',
-              border: '2px solid #e85d24',
+              background: '#ffffff',
+              border: '2px solid #e5e7eb',
               overflow: 'hidden',
               display: 'flex', alignItems: 'center',
               justifyContent: 'center', fontSize: '32px',
-              flexShrink: 0
+              flexShrink: 0,
+              boxShadow: '0 18px 40px rgba(15, 23, 42, 0.05)'
             }}
           >
             {user?.avatar
@@ -86,12 +87,13 @@ const ProfilePage = () => {
               display: 'flex', alignItems: 'center',
               justifyContent: 'space-between',
               padding: '18px',
-              background: '#161616',
-              border: '1px solid #2a2a2a',
+              background: '#ffffff',
+              border: '1px solid #e5e7eb',
               borderRadius: '16px',
               marginBottom: '10px',
               cursor: 'pointer',
-              transition: 'border-color 0.2s'
+              transition: 'border-color 0.2s',
+              boxShadow: '0 18px 40px rgba(15, 23, 42, 0.05)'
             }}
             whileHover={{ borderColor: '#e85d24' }}
           >
@@ -112,14 +114,15 @@ const ProfilePage = () => {
           onClick={handleLogout}
           style={{
             width: '100%', padding: '18px',
-            background: '#1a0000',
-            border: '1px solid #3a0000',
+            background: '#ffffff',
+            border: '1px solid #e5e7eb',
             borderRadius: '16px',
             color: '#ef4444', fontSize: '15px',
             fontWeight: '600', cursor: 'pointer',
             marginTop: '8px', display: 'flex',
             alignItems: 'center', justifyContent: 'center',
-            gap: '8px'
+            gap: '8px',
+            boxShadow: '0 18px 40px rgba(15, 23, 42, 0.05)'
           }}
         >
           🚪 Logout

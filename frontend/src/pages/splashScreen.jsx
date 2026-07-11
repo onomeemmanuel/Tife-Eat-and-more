@@ -13,10 +13,11 @@ const SplashScreen = ({ onDone }) => {
       transition={{ duration: 0.5 }}
       style={{
         position: 'fixed', inset: 0,
-        background: '#0f0f0f',
+        background: '#f8fafc',
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
-        zIndex: 9999
+        zIndex: 9999,
+        color: '#111827'
       }}
     >
       {/* Glowing circle behind logo */}
@@ -49,7 +50,8 @@ const SplashScreen = ({ onDone }) => {
         transition={{ delay: 0.5, duration: 0.5 }}
         style={{
           fontSize: '38px', fontWeight: '900',
-          letterSpacing: '-1px', zIndex: 1
+          letterSpacing: '-1px', zIndex: 1,
+          color: '#111827'
         }}
       >
         Food<span style={{ color: '#e85d24' }}>Rush</span>

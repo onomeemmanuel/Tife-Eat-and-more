@@ -79,7 +79,7 @@ The TifeFood application and cart functionality have been tested. Overall functi
 | Navigate to checkout | ✅ PASS | Clicking cart leads to checkout page |
 | Order summary displays | ✅ PASS | Items, quantities, and prices shown |
 | Delivery address field | ✅ PASS | Text input for address entry |
-| Payment methods | ✅ PASS | Two options: Cash on Delivery, Pay with Card |
+| Payment methods | ✅ PASS | Cash on Delivery only |
 | Place order button | ✅ PASS | Button shows total amount: "Place Order — ₦5,000" |
 | Total amount correct | ✅ PASS | Matches cart total |
 
@@ -243,8 +243,8 @@ The TifeFood application and cart functionality have been tested. Overall functi
    - Show delivery person location on map (leaflet already in dependencies)
 
 5. **Payment Integration**
-   - Complete Paystack payment integration for "Pay with Card" option
-   - Add payment success/failure handling
+   - Cash on Delivery is implemented for assignment scope
+   - Remove third-party payment dependency for simplified order flow
 
 ---
 

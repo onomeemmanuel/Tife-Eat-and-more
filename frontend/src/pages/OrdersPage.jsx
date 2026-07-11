@@ -20,17 +20,17 @@ const OrdersPage = () => {
     fetchOrders();
   }, []);
 
-  if (loading) return <div style={{padding:40,color:'#fff'}}>Loading orders...</div>;
+  if (loading) return <div style={{padding:40,color:'#111827', background:'#f8fafc', minHeight:'100vh'}}>Loading orders...</div>;
 
   return (
-    <div style={{ paddingTop: 84, minHeight: '100vh', background: '#0f0f0f', color: '#fff' }}>
+    <div style={{ paddingTop: 84, minHeight: '100vh', background: '#f8fafc', color: '#111827' }}>
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '24px' }}>
         <h2 style={{ marginBottom: 16 }}>My Orders</h2>
         {orders.length === 0 ? (
           <p style={{ color: '#999' }}>You have no orders yet.</p>
         ) : (
           orders.map(o => (
-            <motion.div key={o._id} style={{ background: '#161616', border: '1px solid #2a2a2a', borderRadius: 12, padding: 12, marginBottom: 12 }}>
+            <motion.div key={o._id} style={{ background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: 12, padding: 12, marginBottom: 12, boxShadow: '0 18px 40px rgba(15, 23, 42, 0.05)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <div>
                   <strong>Order #{o._id.slice(-6)}</strong>

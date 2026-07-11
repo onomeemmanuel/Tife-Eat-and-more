@@ -15,7 +15,7 @@ const HomePage = () => {
     <div style={{
       minHeight: '100vh', display: 'flex',
       alignItems: 'center', justifyContent: 'center',
-      background: '#0f0f0f'
+      background: '#f8fafc'
     }}>
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
@@ -23,10 +23,10 @@ const HomePage = () => {
         style={{ textAlign: 'center' }}
       >
         <div style={{ fontSize: '64px', marginBottom: '16px' }}>🍔</div>
-        <h1 style={{ fontSize: '32px', fontWeight: '700' }}>
+        <h1 style={{ fontSize: '32px', fontWeight: '700', color: '#111827' }}>
           Welcome, <span style={{ color: '#e85d24' }}>{user?.name}</span>!
         </h1>
-        <p style={{ color: '#666', marginTop: '8px' }}>
+        <p style={{ color: '#6b7280', marginTop: '8px' }}>
           Auth is working. Next step — build the menu!
         </p>
         <button

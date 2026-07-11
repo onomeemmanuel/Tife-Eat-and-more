@@ -34,11 +34,11 @@ const Navbar = () => {
         left: 0,
         right: 0,
         zIndex: 100,
-        background: 'rgba(15,15,15,0.95)',
-        backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid #2a2a2a',
-        padding: '0 16px',
-        height: '64px',
+        background: '#ffffff',
+        boxShadow: '0 18px 50px rgba(15, 23, 42, 0.08)',
+        borderBottom: '1px solid #e5e7eb',
+        padding: '0 24px',
+        height: '76px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between'
@@ -46,22 +46,22 @@ const Navbar = () => {
     >
       <div
         onClick={() => navigate(user ? '/' : '/login')}
-        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
+        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}
       >
-        <span style={{ fontSize: '22px' }}>🍔</span>
+        <span style={{ fontSize: '22px' }}>🍽️</span>
         <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
-          <span style={{ fontSize: '18px', fontWeight: '700' }}>
-            Tife<span style={{ color: '#e85d24' }}>Food</span>
+          <span style={{ fontSize: '18px', fontWeight: '800', color: '#111827' }}>
+            Tife<span style={{ color: '#e85d24' }}>Foods</span>
           </span>
           {user && !isPublicPage && (
-            <span style={{ fontSize: '11px', color: '#888', marginTop: '2px' }}>
-              Hey, <span style={{ color: '#e85d24', fontWeight: '600' }}>{user?.name?.split(' ')[0]}</span>
+            <span style={{ fontSize: '12px', color: '#6b7280', marginTop: '2px' }}>
+              Welcome, <span style={{ color: '#111827', fontWeight: '700' }}>{user?.name?.split(' ')[0]}</span>
             </span>
           )}
         </div>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         {user && !isPublicPage ? (
           <>
             <motion.button
@@ -70,17 +70,18 @@ const Navbar = () => {
               onClick={handleCartClick}
               style={{
                 position: 'relative',
-                background: '#e85d24',
-                border: 'none',
-                borderRadius: '12px',
-                padding: '10px 16px',
-                color: '#fff',
+                background: '#ffffff',
+                border: '1px solid #e5e7eb',
+                borderRadius: '14px',
+                padding: '12px 18px',
+                color: '#111827',
                 fontSize: '14px',
-                fontWeight: '600',
+                fontWeight: '700',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '6px'
+                gap: '8px',
+                boxShadow: '0 10px 24px rgba(15, 23, 42, 0.07)'
               }}
             >
               🛒 Cart
@@ -114,11 +115,11 @@ const Navbar = () => {
               whileTap={{ scale: 0.97 }}
               onClick={() => navigate('/profile')}
               style={{
-                background: '#1a1a1a',
-                border: '1px solid #2a2a2a',
-                borderRadius: '10px',
-                padding: '8px 10px',
-                color: '#fff',
+                background: '#f3f4f6',
+                border: '1px solid #d1d5db',
+                borderRadius: '12px',
+                padding: '10px 12px',
+                color: '#111827',
                 fontSize: '14px',
                 cursor: 'pointer'
               }}
@@ -133,10 +134,10 @@ const Navbar = () => {
               title="Logout"
               style={{
                 background: 'transparent',
-                border: '1px solid #2a2a2a',
-                borderRadius: '10px',
-                padding: '8px 10px',
-                color: '#666',
+                border: '1px solid #d1d5db',
+                borderRadius: '12px',
+                padding: '10px 12px',
+                color: '#6b7280',
                 fontSize: '16px',
                 cursor: 'pointer',
                 lineHeight: 1
@@ -151,13 +152,13 @@ const Navbar = () => {
             whileTap={{ scale: 0.97 }}
             onClick={() => navigate('/login')}
             style={{
-              background: '#e85d24',
+              background: '#111827',
               border: 'none',
-              borderRadius: '10px',
-              padding: '8px 12px',
+              borderRadius: '14px',
+              padding: '10px 14px',
               color: '#fff',
               fontSize: '14px',
-              fontWeight: '600',
+              fontWeight: '700',
               cursor: 'pointer'
             }}
           >
@@ -165,6 +166,33 @@ const Navbar = () => {
           </motion.button>
         )}
       </div>
+      {user && !isPublicPage && (
+        <button
+          onClick={() => navigate('/chatbot')}
+          style={{
+            position: 'fixed',
+            right: 16,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            width: '58px',
+            height: '58px',
+            border: 'none',
+            borderRadius: '30px 0 0 30px',
+            background: '#e85d24',
+            color: '#ffffff',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 24px 60px rgba(232, 93, 36, 0.2)',
+            zIndex: 110
+          }}
+        >
+          <span style={{ fontSize: '24px', lineHeight: 1 }}>
+            💬
+          </span>
+        </button>
+      )}
     </motion.nav>
   );
 };

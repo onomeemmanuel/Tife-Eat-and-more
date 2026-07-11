@@ -13,8 +13,8 @@ body,
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #0f0f0f;
-  color: #fff;
+  background: #f9fafb;
+  color: #111827;
 }
 
 .app-page {
@@ -38,17 +38,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: #edf2f7;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #e85d24;
+  background: #cbd5e1;
   border-radius: 3px;
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px #1a1a1a inset !important;
-  -webkit-text-fill-color: #fff !important;
+  -webkit-box-shadow: 0 0 0 30px #fff inset !important;
+  -webkit-text-fill-color: #111827 !important;
 }
 
 /* Mobile responsiveness tweaks */

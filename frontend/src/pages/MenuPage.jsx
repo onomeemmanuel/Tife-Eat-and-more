@@ -104,7 +104,7 @@ const MenuPage = () => {
 
   return (
     <div style={{
-      background: '#0f0f0f', minHeight: '100vh',
+      background: '#f8fafc', minHeight: '100vh',
       paddingBottom: '100px'
     }}>
       <Navbar />
@@ -124,34 +124,16 @@ const MenuPage = () => {
           }}
         >
           <div>
-            <p style={{ color: '#666', fontSize: '14px' }}>
+            <p style={{ color: '#6b7280', fontSize: '14px' }}>
               📍 Lagos, Nigeria
             </p>
-            <h1 style={{ fontSize: '24px', fontWeight: '800', marginTop: '4px' }}>
+            <h1 style={{ fontSize: '32px', fontWeight: '800', marginTop: '4px', color: '#111827' }}>
               {getGreeting()},<br />
               <span style={{ color: '#e85d24' }}>
                 {user?.name?.split(' ')[0]} 👋
               </span>
             </h1>
           </div>
-          <motion.div
-            whileTap={{ scale: 0.9 }}
-            onClick={() => navigate('/chatbot')}
-            style={{
-              width: '44px', height: '44px',
-              background: '#1a1a1a',
-              border: '1px solid #2a2a2a',
-              borderRadius: '50%',
-              display: 'flex', alignItems: 'center',
-              justifyContent: 'center', fontSize: '20px',
-              cursor: 'pointer'
-            }}
-          >
-            {user?.avatar
-              ? <img src={user.avatar} style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
-              : '👤'
-            }
-          </motion.div>
         </motion.div>
 
         {/* Search bar */}
@@ -176,15 +158,15 @@ const MenuPage = () => {
             placeholder="Search for food..."
             style={{
               width: '100%', padding: '16px 16px 16px 48px',
-              background: '#1a1a1a',
-              border: '1.5px solid #2a2a2a',
-              borderRadius: '16px', color: '#fff',
+              background: '#ffffff',
+              border: '1.5px solid #d1d5db',
+              borderRadius: '18px', color: '#111827',
               fontSize: '15px', outline: 'none',
               transition: 'border-color 0.2s',
               boxSizing: 'border-box'
             }}
             onFocus={e => e.target.style.borderColor = '#e85d24'}
-            onBlur={e => e.target.style.borderColor = '#2a2a2a'}
+            onBlur={e => e.target.style.borderColor = '#d1d5db'}
           />
           {search && (
             <button
@@ -229,10 +211,10 @@ const MenuPage = () => {
                 onClick={() => setActiveCategory(cat)}
                 style={{
                   padding: '10px 18px',
-                  background: activeCategory === cat ? '#e85d24' : '#1a1a1a',
-                  border: `1px solid ${activeCategory === cat ? '#e85d24' : '#2a2a2a'}`,
+                  background: activeCategory === cat ? '#e85d24' : '#ffffff',
+                  border: `1px solid ${activeCategory === cat ? '#e85d24' : '#e5e7eb'}`,
                   borderRadius: '50px',
-                  color: activeCategory === cat ? '#fff' : '#666',
+                  color: activeCategory === cat ? '#ffffff' : '#374151',
                   fontSize: '13px', fontWeight: '600',
                   cursor: 'pointer', whiteSpace: 'nowrap',
                   transition: 'all 0.2s',

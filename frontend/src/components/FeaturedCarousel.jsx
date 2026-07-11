@@ -53,10 +53,10 @@ const FeaturedCarousel = () => {
         display: 'flex', justifyContent: 'space-between',
         alignItems: 'center', marginBottom: '16px'
       }}>
-        <h2 style={{ fontSize: '20px', fontWeight: '800' }}>
+        <h2 style={{ fontSize: '20px', fontWeight: '800', color: '#111827' }}>
           🔥 Featured
         </h2>
-        <span style={{ fontSize: '13px', color: '#e85d24', cursor: 'pointer' }}>
+        <span style={{ fontSize: '13px', color: '#6b7280', cursor: 'pointer' }}>
           See all →
         </span>
       </div>
@@ -71,11 +71,12 @@ const FeaturedCarousel = () => {
               transition={{ delay: i * 0.1 }}
               style={{
                 flex: '0 0 260px',
-                background: 'linear-gradient(135deg, #1a0a00, #2d1200)',
-                border: '1px solid #3a1a00',
+                background: '#ffffff',
+                border: '1px solid #e5e7eb',
                 borderRadius: '20px',
                 overflow: 'hidden',
-                position: 'relative'
+                position: 'relative',
+                boxShadow: '0 18px 40px rgba(15, 23, 42, 0.08)'
               }}
             >
               <img

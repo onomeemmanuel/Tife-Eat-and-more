@@ -45,7 +45,6 @@ const ensureSession = (deviceId) => {
       awaitingSelection: false,
       awaitingQuantity: false,
       pendingItem: null,
-      pendingPaymentOrder: null,
       lastPlacedOrder: null,
       createdAt: new Date().toISOString()
     };
@@ -175,13 +174,13 @@ exports.handleChatMessage = async (req, res) => {
         id: `chat-${Date.now()}`,
         items: session.currentOrder.map((item) => ({ ...item })),
         totalAmount: summary.total,
-        paymentStatus: 'pending',
-        createdAt: new Date().toISOString()
+        paymentStatus: 'paid',
+        createdAt: new Date().toISOString(),
+        paidAt: new Date().toISOString()
       };
 
       session.orderHistory.unshift(placedOrder);
       session.lastPlacedOrder = placedOrder;
-      session.pendingPaymentOrder = placedOrder;
       session.currentOrder = [];
       session.awaitingSelection = false;
       session.awaitingQuantity = false;
@@ -189,9 +188,8 @@ exports.handleChatMessage = async (req, res) => {
 
       return res.json({
         success: true,
-        message: `Order placed successfully.\nTotal: ${formatCurrency(summary.total)}\n\nPay now to confirm your payment.\n${buildMainMenu()}`,
+        message: `Order placed successfully.\nTotal: ${formatCurrency(summary.total)}\n\nYour order is confirmed and will be prepared shortly.\n${buildMainMenu()}`,
         order: placedOrder,
-        paymentRequired: true,
         summary
       });
     }
@@ -235,47 +233,9 @@ exports.handleChatMessage = async (req, res) => {
       return res.json({ success: true, message: 'Your current order has been cancelled.\n\n' + buildMainMenu() });
     }
 
-    if (normalized === 'pay' || normalized === 'pay now') {
-      if (!session.pendingPaymentOrder) {
-        return res.json({ success: true, message: 'There is no pending payment right now. Select 1 to place a new order.' });
-      }
-
-      return res.json({
-        success: true,
-        message: 'Your payment is ready. Use the Pay now button below to complete it.',
-        paymentRequired: true,
-        order: session.pendingPaymentOrder
-      });
-    }
-
     return res.json({ success: true, message: `Invalid input.\n\n${buildMainMenu()}` });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
-exports.markOrderPaid = async (req, res) => {
-  try {
-    const { deviceId, orderId } = req.body;
-    if (!deviceId) return res.status(400).json({ success: false, message: 'Device ID is required' });
-
-    const session = ensureSession(deviceId);
-    const targetOrder = session.orderHistory.find((order) => order.id === orderId) || session.lastPlacedOrder;
-    if (!targetOrder) {
-      return res.status(404).json({ success: false, message: 'No pending order found' });
-    }
-
-    targetOrder.paymentStatus = 'paid';
-    targetOrder.paidAt = new Date().toISOString();
-    session.pendingPaymentOrder = null;
-    session.lastPlacedOrder = targetOrder;
-
-    res.json({
-      success: true,
-      message: 'Payment successful. Your order is now confirmed and ready for preparation!',
-      order: targetOrder
-    });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-};

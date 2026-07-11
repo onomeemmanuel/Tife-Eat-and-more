@@ -53,7 +53,7 @@ const VerifyOTPPage = () => {
     <div style={{
       minHeight: '100vh', display: 'flex',
       alignItems: 'center', justifyContent: 'center',
-      background: 'linear-gradient(135deg, #0f0f0f 0%, #1a0a00 100%)',
+      background: '#f8fafc',
       padding: '20px'
     }}>
       <motion.div
@@ -62,11 +62,12 @@ const VerifyOTPPage = () => {
         transition={{ duration: 0.5 }}
         style={{
           width: '100%', maxWidth: '420px',
-          background: '#161616',
-          border: '1px solid #2a2a2a',
+          background: '#ffffff',
+          border: '1px solid #e5e7eb',
           borderRadius: '24px',
           padding: '40px 36px',
-          textAlign: 'center'
+          textAlign: 'center',
+          boxShadow: '0 18px 40px rgba(15, 23, 42, 0.06)'
         }}
       >
         <motion.div
@@ -77,10 +78,10 @@ const VerifyOTPPage = () => {
           📧
         </motion.div>
 
-        <h2 style={{ fontSize: '24px', fontWeight: '700', marginBottom: '8px' }}>
+        <h2 style={{ fontSize: '24px', fontWeight: '700', marginBottom: '8px', color: '#111827' }}>
           Check your email
         </h2>
-        <p style={{ color: '#666', fontSize: '14px', marginBottom: '32px' }}>
+        <p style={{ color: '#6b7280', fontSize: '14px', marginBottom: '32px' }}>
           We sent a 6-digit code to<br />
           <span style={{ color: '#e85d24', fontWeight: '600' }}>{state?.email}</span>
         </p>
@@ -95,9 +96,9 @@ const VerifyOTPPage = () => {
           whileTap={{ scale: 0.97 }}
           style={{
             width: '100%', padding: '15px',
-            background: otp.length === 6 ? '#e85d24' : '#2a2a2a',
+            background: otp.length === 6 ? '#111827' : '#d1d5db',
             border: 'none', borderRadius: '14px',
-            color: otp.length === 6 ? '#fff' : '#555',
+            color: otp.length === 6 ? '#fff' : '#9ca3af',
             fontSize: '16px', fontWeight: '600',
             cursor: otp.length === 6 ? 'pointer' : 'not-allowed',
             marginTop: '28px', transition: 'all 0.3s'

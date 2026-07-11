@@ -44,12 +44,12 @@ const OrdersHistoryPage = () => {
   }, [navigate, setUser]);
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0f0f0f', paddingBottom: '100px' }}>
+    <div style={{ minHeight: '100vh', background: '#f8fafc', paddingBottom: '100px' }}>
 
       {/* Header */}
       <div style={{
         padding: '56px 24px 20px',
-        borderBottom: '1px solid #1a1a1a'
+        borderBottom: '1px solid #e5e7eb'
       }}>
         <h1 style={{ fontSize: '26px', fontWeight: '800' }}>My Orders</h1>
         <p style={{ color: '#555', fontSize: '13px', marginTop: '4px' }}>
@@ -65,8 +65,9 @@ const OrdersHistoryPage = () => {
               animate={{ opacity: [0.3, 0.6, 0.3] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.2 }}
               style={{
-                height: '100px', background: '#1a1a1a',
-                borderRadius: '16px', marginBottom: '12px'
+                height: '100px', background: '#ffffff',
+                borderRadius: '16px', marginBottom: '12px',
+                boxShadow: '0 18px 40px rgba(15, 23, 42, 0.06)'
               }}
             />
           ))
@@ -104,13 +105,14 @@ const OrdersHistoryPage = () => {
                 transition={{ delay: i * 0.08 }}
                 onClick={() => navigate(`/track/${order._id}`)}
                 style={{
-                  background: '#161616',
-                  border: '1px solid #2a2a2a',
+                  background: '#ffffff',
+                  border: '1px solid #e5e7eb',
                   borderRadius: '18px',
                   padding: '18px',
                   marginBottom: '12px',
                   cursor: 'pointer',
-                  transition: 'border-color 0.2s'
+                  transition: 'border-color 0.2s',
+                  boxShadow: '0 18px 40px rgba(15, 23, 42, 0.06)'
                 }}
                 whileHover={{ borderColor: '#e85d24' }}
               >

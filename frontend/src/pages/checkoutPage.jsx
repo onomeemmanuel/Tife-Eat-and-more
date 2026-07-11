@@ -3,15 +3,12 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useCart } from '../context/CartContext';
-import { useAuth } from '../context/AuthContext';
 import { placeOrder } from '../api/orders';
 
 const CheckoutPage = () => {
   const { cartItems, totalPrice, clearCart, setIsCartOpen } = useCart();
-  const { user } = useAuth();
   const navigate = useNavigate();
   const [address, setAddress] = useState('');
-  const [payment, setPayment] = useState('cash');
   const [loading, setLoading] = useState(false);
 
   const deliveryFee = 500;
@@ -32,7 +29,7 @@ const CheckoutPage = () => {
           image: i.image
         })),
         deliveryAddress: address,
-        paymentMethod: payment
+        paymentMethod: 'cash'
       };
 
       const { data } = await placeOrder(orderData);
@@ -54,7 +51,7 @@ const CheckoutPage = () => {
 
   return (
     <div style={{
-      minHeight: '100vh', background: '#0f0f0f',
+      minHeight: '100vh', background: '#f8fafc',
       padding: '40px 24px'
     }}>
       <div style={{ maxWidth: '560px', margin: '0 auto' }}>
@@ -86,11 +83,12 @@ const CheckoutPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           style={{
-            background: '#161616',
-            border: '1px solid #2a2a2a',
+            background: '#ffffff',
+            border: '1px solid #e5e7eb',
             borderRadius: '20px',
             padding: '24px',
-            marginBottom: '20px'
+            marginBottom: '20px',
+            boxShadow: '0 18px 40px rgba(15, 23, 42, 0.06)'
           }}
         >
           <h3 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '16px' }}>
@@ -134,7 +132,7 @@ const CheckoutPage = () => {
             ))
           )}
 
-          <div style={{ borderTop: '1px solid #2a2a2a', paddingTop: '16px', marginTop: '8px' }}>
+          <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: '16px', marginTop: '8px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
               <span style={{ color: '#666', fontSize: '14px' }}>Subtotal</span>
               <span style={{ fontSize: '14px' }}>₦{totalPrice.toLocaleString()}</span>
@@ -158,11 +156,12 @@ const CheckoutPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           style={{
-            background: '#161616',
-            border: '1px solid #2a2a2a',
+            background: '#ffffff',
+            border: '1px solid #e5e7eb',
             borderRadius: '20px',
             padding: '24px',
-            marginBottom: '20px'
+            marginBottom: '20px',
+            boxShadow: '0 18px 40px rgba(15, 23, 42, 0.06)'
           }}
         >
           <h3 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '16px' }}>
@@ -186,44 +185,6 @@ const CheckoutPage = () => {
             onFocus={e => e.target.style.borderColor = '#e85d24'}
             onBlur={e => e.target.style.borderColor = '#2a2a2a'}
           />
-        </motion.div>
-
-        {/* Payment method */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          style={{
-            background: '#161616',
-            border: '1px solid #2a2a2a',
-            borderRadius: '20px',
-            padding: '24px',
-            marginBottom: '28px'
-          }}
-        >
-          <h3 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '16px' }}>
-            💳 Payment Method
-          </h3>
-          <div style={{ display: 'flex', gap: '12px' }}>
-            {['cash', 'card'].map(method => (
-              <motion.button
-                key={method}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => setPayment(method)}
-                style={{
-                  flex: 1, padding: '14px',
-                  background: payment === method ? '#1a0a00' : '#1a1a1a',
-                  border: `2px solid ${payment === method ? '#e85d24' : '#2a2a2a'}`,
-                  borderRadius: '14px',
-                  color: payment === method ? '#e85d24' : '#666',
-                  fontSize: '14px', fontWeight: '600',
-                  cursor: 'pointer', transition: 'all 0.2s'
-                }}
-              >
-                {method === 'cash' ? '💵 Cash on Delivery' : '💳 Pay with Card'}
-              </motion.button>
-            ))}
-          </div>
         </motion.div>
 
         {/* Place order button */}

@@ -40,13 +40,13 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="app-page" style={{ background: 'linear-gradient(135deg, #0f0f0f 0%, #1a0a00 100%)' }}>
+    <div className="app-page" style={{ background: '#f8fafc' }}>
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="auth-card"
-        style={{ background: '#161616', border: '1px solid #2a2a2a' }}
+        style={{ background: '#ffffff', border: '1px solid #e5e7eb', boxShadow: '0 18px 40px rgba(15, 23, 42, 0.06)' }}
       >
         <motion.div
           initial={{ scale: 0 }}
@@ -69,9 +69,9 @@ const LoginPage = () => {
           display: 'flex', alignItems: 'center',
           gap: '12px', margin: '20px 0'
         }}>
-          <div style={{ flex: 1, height: '1px', background: '#2a2a2a' }} />
-          <span style={{ color: '#555', fontSize: '13px' }}>or</span>
-          <div style={{ flex: 1, height: '1px', background: '#2a2a2a' }} />
+          <div style={{ flex: 1, height: '1px', background: '#e5e7eb' }} />
+          <span style={{ color: '#6b7280', fontSize: '13px' }}>or</span>
+          <div style={{ flex: 1, height: '1px', background: '#e5e7eb' }} />
         </div>
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -91,13 +91,13 @@ const LoginPage = () => {
                 required
                 style={{
                   width: '100%', padding: '14px 16px',
-                  background: '#1a1a1a', border: '1.5px solid #2a2a2a',
-                  borderRadius: '12px', color: '#fff',
+                  background: '#ffffff', border: '1.5px solid #d1d5db',
+                  borderRadius: '12px', color: '#111827',
                   fontSize: '15px', outline: 'none',
                   transition: 'border-color 0.2s'
                 }}
                 onFocus={e => e.target.style.borderColor = '#e85d24'}
-                onBlur={e => e.target.style.borderColor = '#2a2a2a'}
+                onBlur={e => e.target.style.borderColor = '#d1d5db'}
               />
             </motion.div>
           ))}

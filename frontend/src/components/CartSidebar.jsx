@@ -40,16 +40,17 @@ const CartSidebar = () => {
             style={{
               position: 'fixed', top: 0, right: 0,
               height: '100vh', width: '380px',
-              background: '#161616',
-              borderLeft: '1px solid #2a2a2a',
+              background: '#ffffff',
+              borderLeft: '1px solid #e5e7eb',
               zIndex: 201,
-              display: 'flex', flexDirection: 'column'
+              display: 'flex', flexDirection: 'column',
+              boxShadow: '-20px 0 60px rgba(15, 23, 42, 0.08)'
             }}
           >
             {/* Header */}
             <div style={{
               padding: '24px',
-              borderBottom: '1px solid #2a2a2a',
+              borderBottom: '1px solid #e5e7eb',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center'
@@ -63,9 +64,9 @@ const CartSidebar = () => {
               <button
                 onClick={() => setIsCartOpen(false)}
                 style={{
-                  background: '#2a2a2a', border: 'none',
+                  background: '#f3f4f6', border: 'none',
                   borderRadius: '10px', width: '36px', height: '36px',
-                  color: '#fff', fontSize: '18px', cursor: 'pointer',
+                  color: '#111827', fontSize: '18px', cursor: 'pointer',
                   display: 'flex', alignItems: 'center', justifyContent: 'center'
                 }}
               >
@@ -97,10 +98,10 @@ const CartSidebar = () => {
                       style={{
                         display: 'flex', gap: '12px',
                         padding: '12px',
-                        background: '#1a1a1a',
-                        borderRadius: '14px',
+                        background: '#f8fafc',
+                        borderRadius: '18px',
                         marginBottom: '10px',
-                        border: '1px solid #2a2a2a'
+                        border: '1px solid #e5e7eb'
                       }}
                     >
                       <img

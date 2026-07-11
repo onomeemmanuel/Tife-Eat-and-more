@@ -13,7 +13,7 @@ const FoodCard = ({ item, index }) => {
       transition={{ delay: index * 0.05, duration: 0.4 }}
       whileHover={{ y: -6, transition: { duration: 0.2 } }}
       style={{
-        background: '#161616',
+        background: '#f6ebeb',
         border: '1px solid #2a2a2a',
         borderRadius: '20px',
         overflow: 'hidden',
@@ -37,24 +37,24 @@ const FoodCard = ({ item, index }) => {
         {/* Category badge */}
         <div style={{
           position: 'absolute', top: '12px', left: '12px',
-          background: 'rgba(0,0,0,0.7)',
-          backdropFilter: 'blur(8px)',
-          borderRadius: '8px',
-          padding: '4px 10px',
-          fontSize: '11px', fontWeight: '600',
-          color: '#e85d24'
+          background: 'rgba(255,255,255,0.94)',
+          borderRadius: '10px',
+          padding: '5px 12px',
+          fontSize: '11px', fontWeight: '700',
+          color: '#111827',
+          boxShadow: '0 10px 20px rgba(15, 23, 42, 0.08)'
         }}>
           {item.category}
         </div>
         {/* Rating */}
         <div style={{
           position: 'absolute', top: '12px', right: '12px',
-          background: 'rgba(0,0,0,0.7)',
-          backdropFilter: 'blur(8px)',
-          borderRadius: '8px',
-          padding: '4px 10px',
-          fontSize: '12px', fontWeight: '600',
-          color: '#fff'
+          background: 'rgba(255,255,255,0.94)',
+          borderRadius: '10px',
+          padding: '5px 12px',
+          fontSize: '12px', fontWeight: '700',
+          color: '#111827',
+          boxShadow: '0 10px 20px rgba(15, 23, 42, 0.08)'
         }}>
           ⭐ {item.rating}
         </div>
@@ -66,8 +66,8 @@ const FoodCard = ({ item, index }) => {
           {item.name}
         </h3>
         <p style={{
-          fontSize: '13px', color: '#666',
-          marginBottom: '12px', lineHeight: '1.4',
+          fontSize: '13px', color: '#6b7280',
+          marginBottom: '12px', lineHeight: '1.6',
           display: '-webkit-box',
           WebkitLineClamp: 2,
           WebkitBoxOrient: 'vertical',

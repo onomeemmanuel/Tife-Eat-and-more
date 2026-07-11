@@ -150,7 +150,7 @@ const OrderTrackingPage = () => {
   if (loading) {
     return (
       <div style={{
-        minHeight: '100vh', background: '#0f0f0f',
+        minHeight: '100vh', background: '#f8fafc',
         display: 'flex', alignItems: 'center', justifyContent: 'center'
       }}>
         <motion.div
@@ -165,7 +165,7 @@ const OrderTrackingPage = () => {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0f0f0f', padding: '24px' }}>
+    <div style={{ minHeight: '100vh', background: '#f8fafc', padding: '24px' }}>
       <div style={{ maxWidth: '640px', margin: '0 auto' }}>
 
         {/* Header */}
@@ -200,8 +200,9 @@ const OrderTrackingPage = () => {
           transition={{ delay: 0.1 }}
           style={{
             borderRadius: '20px', overflow: 'hidden',
-            border: '1px solid #2a2a2a',
-            marginBottom: '20px', height: '280px'
+            border: '1px solid #e5e7eb',
+            marginBottom: '20px', height: '280px',
+            boxShadow: '0 18px 40px rgba(15, 23, 42, 0.06)'
           }}
         >
           <MapContainer
